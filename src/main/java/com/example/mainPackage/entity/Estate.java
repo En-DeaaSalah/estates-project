@@ -1,6 +1,7 @@
 package com.example.mainPackage.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Estate {
@@ -22,6 +23,17 @@ public class Estate {
       private double price;
 
       private int Number_of_Shares;
+
+
+      private Date publishDate;
+
+      public Date getPublishDate() {
+            return publishDate;
+      }
+
+      public void setPublishDate(Date publishDate) {
+            this.publishDate = publishDate;
+      }
 
       @Column(columnDefinition = "Boolean default 'true'")
       private boolean available=true;

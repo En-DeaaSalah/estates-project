@@ -62,6 +62,9 @@ public class EstateService {
                   addEstateRequest.estate.setAvailable(true);
 
 
+                  System.err.println(addEstateRequest.estate.getNumber_of_Shares());
+
+
                  if(addEstateRequest.estate.getNumber_of_Shares()==0){
 
 
@@ -69,6 +72,8 @@ public class EstateService {
 
                  }
 
+
+                  addEstateRequest.estate.setPublishDate(new Date());
                   estateRepository.save(addEstateRequest.estate);
 
                   log.registerToLog(owner,addEstateRequest.estate,"ADD");

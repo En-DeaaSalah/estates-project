@@ -3,6 +3,7 @@ package com.example.mainPackage.repository;
 import com.example.mainPackage.entity.Estate;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -31,7 +32,6 @@ public interface EstateRepository extends JpaRepository<Estate,Long> {
 
 
 
-
-
-
+      @Override
+      List<Estate> findAll(Sort sort);
 }

@@ -9,22 +9,26 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController //json rest pattern
-
-@Controller //html mvc
+@RestController
 
 @RequestMapping(path = "accounts/")
-
+@CrossOrigin(origins = "http://localhost:9000")
 public class AccountController {
 
       private AccountServices accountServices;
       private UserServices userServices;
+
+
+
+
+
 
       @Autowired
       public AccountController(AccountServices accountServices, UserServices userServices) {
             this.accountServices = accountServices;
             this.userServices = userServices;
       }
+
 
 
 
@@ -56,8 +60,10 @@ public class AccountController {
 
       }
 
-      @CrossOrigin(origins = "http:/localhost:8080")
+
+
       @GetMapping(path ="all")
+
       List<Account>getAllAccounts(){
 
             return accountServices.getAllAccounts();

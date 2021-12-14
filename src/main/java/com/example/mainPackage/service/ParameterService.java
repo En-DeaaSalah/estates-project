@@ -40,7 +40,7 @@ public class ParameterService {
 
 
 
-      Parameter getParameters(){
+      public Parameter getParameters(){
 
             if(parameterRepository.findAll().size()==0){
 
@@ -63,7 +63,7 @@ public class ParameterService {
       }
 
       @Transactional
-      Parameter updateShares(int shares){
+      public Parameter updateShares(int shares){
 
             getParameters().setNumber_of_Shares(shares);
 
@@ -72,7 +72,7 @@ public class ParameterService {
 
       }
       @Transactional
-      Parameter updateRatio(double Ratio){
+      public Parameter updateRatio(double Ratio){
 
             getParameters().setProfit_Ratio(Ratio);
 

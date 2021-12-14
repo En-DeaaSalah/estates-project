@@ -2,11 +2,14 @@ package com.example.mainPackage.controller;
 
 
 import com.example.mainPackage.entity.Estate;
+import com.example.mainPackage.entity.Parameter;
 import com.example.mainPackage.repository.ParameterRepository;
 import com.example.mainPackage.requestBodyClassis.AddEstateRequest;
 import com.example.mainPackage.requestBodyClassis.SaleRequest;
 import com.example.mainPackage.requestBodyClassis.UpdateEstateRequest;
+import com.example.mainPackage.requestBodyClassis.parameterSetRequest;
 import com.example.mainPackage.service.EstateService;
+import com.example.mainPackage.service.ParameterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,19 +17,54 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "estates/")
+@CrossOrigin(origins = "http://localhost:9000")
 public class EstateController {
 
 
       private EstateService estateService;
 
-
-
+      private ParameterService parameterService;
 
       @Autowired
-      public EstateController(EstateService estateService) {
+      public EstateController(EstateService estateService, ParameterService parameterService) {
             this.estateService = estateService;
+            this.parameterService = parameterService;
+      }
+
+      @GetMapping(path = "param",produces = "application/json")
+      Parameter getParam(){
+
+
+            return parameterService.getParameters();
+
 
       }
+
+      @PostMapping(path = "param/setShares",produces = "application/json")
+      Parameter paramSetShares(@RequestBody parameterSetRequest request){
+
+
+            return parameterService.updateShares(request.shares);
+
+
+
+      }
+
+            @PostMapping(path = "param/setRatio",produces = "application/json")
+      Parameter paramSetRatio(@RequestBody parameterSetRequest request){
+
+
+
+
+                  return parameterService.updateRatio(request.ratio);
+
+
+      }
+
+
+
+
+
 
 
 
@@ -94,6 +132,13 @@ public class EstateController {
 
 
       }
+
+
+
+
+
+
+
 
 
 }
